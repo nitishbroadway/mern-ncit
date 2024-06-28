@@ -1,3 +1,4 @@
 const RegisterCtrl = require('./register.controller')
+const LoginCtrl = require('./login.controller')
 
-module.exports = { RegisterCtrl }
+module.exports = { RegisterCtrl, LoginCtrl }

@@ -20,6 +20,7 @@ app.use((error, req, res, next) => {
     
     res.send({
         message: error.message || 'Problem while fulfilling request',
+        errors: error.errors
     })
 })
 
