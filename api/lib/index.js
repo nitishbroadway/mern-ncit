@@ -25,4 +25,19 @@ const errorMsg = (next, error) => {
     }
 }
 
-module.exports = { validationError, errorMsg }
+const auth = async (req, res, next) => {
+    try {
+        if('authorization' in req.headers) {
+
+        } else {
+            next({
+                message: 'Authentication token is missing',
+                status: 401,
+            })
+        }
+    } catch(e) {
+
+    }
+}
+
+module.exports = { validationError, errorMsg, auth }
