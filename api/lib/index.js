@@ -1,3 +1,6 @@
+const jwt = require('jsonwebtoken')
+const { User } = require('../models')
+
 const validationError = (next, name, message) => {
     next({
         message: 'There seems to be some validation error',
@@ -28,7 +31,22 @@ const errorMsg = (next, error) => {
 const auth = async (req, res, next) => {
     try {
         if('authorization' in req.headers) {
+            const token = req.headers.authorization.split(' ').pop()
 
+            const decoded = jwt.verify(token, process.env.JWT_TOKEN)
+
+            const user = await User.findById(decoded.uid)
+
+            if(user) {
+                req.user = user
+
+                next()
+            } else {
+                next({
+                    message: 'Authentication token is invalid',
+                    status: 401,
+                })
+            }
         } else {
             next({
                 message: 'Authentication token is missing',
@@ -36,7 +54,10 @@ const auth = async (req, res, next) => {
             })
         }
     } catch(e) {
-
+        next({
+            message: 'Authentication token is invalid',
+            status: 401,
+        })
     }
 }
 
