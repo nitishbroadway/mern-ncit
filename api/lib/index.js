@@ -61,4 +61,15 @@ const auth = async (req, res, next) => {
     }
 }
 
-module.exports = { validationError, errorMsg, auth }
+const adminOnly = (req, res, next) => {
+    if(req.user.role == 'Admin') {
+        next()
+    } else {
+        next({
+            message: 'Access denied',
+            status: 403
+        })
+    }
+}
+
+module.exports = { validationError, errorMsg, auth, adminOnly }

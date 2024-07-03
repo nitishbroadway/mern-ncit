@@ -1,5 +1,6 @@
-const { errorMsg } = require("../../lib")
+const { errorMsg, validationError } = require("../../lib")
 const { User } = require("../../models")
+const bcrypt = require('bcryptjs')
 
 class ProfileCtrl {
     details = async (req, res, next) => {
@@ -20,7 +21,31 @@ class ProfileCtrl {
         }
     }
     
-    password = async (req, res, next) => {}
+    password = async (req, res, next) => {
+        try {
+            const { oldPassword, newPassword, confirmPassword } = req.body
+
+           const user = await User.findById(req.user._id).select('+password')
+
+            if (bcrypt.compareSync(oldPassword, user.password)) {
+                if (newPassword == confirmPassword) {
+                    const hash = bcrypt.hashSync(newPassword, 10);
+
+                    await User.findByIdAndUpdate(user._id, {password: hash})
+
+                    res.send({
+                        message: 'Password updated'
+                    })
+                } else {
+                    validationError(next, 'newPassword', 'The password is not confirmed')
+                }
+            } else {
+                validationError(next, 'password', 'Old Password is incorrect')
+            }
+        } catch (error) {
+            errorMsg(next, error)
+        }
+    }
 }
 
 module.exports = new ProfileCtrl
