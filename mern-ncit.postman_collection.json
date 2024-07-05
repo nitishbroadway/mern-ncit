@@ -1,0 +1,724 @@
+{
+	"info": {
+		"_postman_id": "871c96ba-635f-4463-bf38-ab170868ef92",
+		"name": "mern-ncit",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21834735"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Person A User\",\n    \"email\": \"person.a@email.com\",\n    \"password\": \"Password#123\",\n    \"confirmPassword\": \"Password#123\",\n    \"phone\": \"9841234567\",\n    \"address\": \"Kathmandu\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/auth/register",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@email.com\",\n    \"password\": \"Password#123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/auth/login",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "profile",
+			"item": [
+				{
+					"name": "Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/profile/details",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"profile",
+								"details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Admin User\",\n    \"address\": \"Lalitpur\",\n    \"phone\": \"9841234567\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/profile",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Admin User\",\n    \"address\": \"Bhaktapur\",\n    \"phone\": \"9841234567\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/profile",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"oldPassword\": \"Password#123\",\n    \"newPassword\": \"Password\",\n    \"confirmPassword\": \"Password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/profile/password",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"profile",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"oldPassword\": \"Password\",\n    \"newPassword\": \"Password#123\",\n    \"confirmPassword\": \"Password#123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/profile/password",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"profile",
+								"password"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{TOKEN}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "cms",
+			"item": [
+				{
+					"name": "authors",
+					"item": [
+						{
+							"name": "List All",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/authors",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"authors"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Person B User\",\n    \"email\": \"person.B@email.com\",\n    \"password\": \"Password#123\",\n    \"confirmPassword\": \"Password#123\",\n    \"phone\": \"9841234567\",\n    \"address\": \"Kathmandu\",\n    \"status\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/authors",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"authors"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/authors/6684c2421bfdedcb4d97f150",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"authors",
+										"6684c2421bfdedcb4d97f150"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Person B User\",\n    \"address\": \"Lalitpur\",\n    \"phone\": \"9841234567\",\n    \"status\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/authors/6684c2421bfdedcb4d97f150",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"authors",
+										"6684c2421bfdedcb4d97f150"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Person B User\",\n    \"address\": \"Banepa\",\n    \"phone\": \"9841234567\",\n    \"status\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/authors/6684c2421bfdedcb4d97f150",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"authors",
+										"6684c2421bfdedcb4d97f150"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/authors/6684c2421bfdedcb4d97f150",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"authors",
+										"6684c2421bfdedcb4d97f150"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "categories",
+					"item": [
+						{
+							"name": "List All",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/categories",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Entertainment\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/categories",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/categories/66875c18e550dab27585e426",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"categories",
+										"66875c18e550dab27585e426"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Entertainment News\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/categories/66875c18e550dab27585e426",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"categories",
+										"66875c18e550dab27585e426"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Entertainment\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/categories/66875c18e550dab27585e426",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"categories",
+										"66875c18e550dab27585e426"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/categories/66875c18e550dab27585e426",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"categories",
+										"66875c18e550dab27585e426"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "articles",
+					"item": [
+						{
+							"name": "List All",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/articles",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"articles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Demo Article B",
+											"type": "text"
+										},
+										{
+											"key": "content",
+											"value": "shfsdhfk kshdfkh ,jhsjfh jshdfjkhsdjfhkshfkjdhsfkjdshfkjsh kshfkjsdhfkj skjfhkjshf sjdfh",
+											"type": "text"
+										},
+										{
+											"key": "categoryId",
+											"value": "66875bf7e550dab27585e41a",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": []
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API_URL}}/articles",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"articles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/articles/668765d2c5294511ab1b6f13",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"articles",
+										"668765d2c5294511ab1b6f13"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Demo Article B",
+											"type": "text"
+										},
+										{
+											"key": "content",
+											"value": "shfsdhfk kshdfkh ,jhsjfh jshdfjkhsdjfhkshfkjdhsfkjdshfkjsh kshfkjsdhfkj skjfhkjshf sjdfh",
+											"type": "text"
+										},
+										{
+											"key": "categoryId",
+											"value": "66875bf7e550dab27585e41a",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "mikhail-vasilyev-gGC63oug3iY-unsplash.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API_URL}}/articles/668765d2c5294511ab1b6f13",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"articles",
+										"668765d2c5294511ab1b6f13"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Demo Article B",
+											"type": "text"
+										},
+										{
+											"key": "content",
+											"value": "aksdjlkaj alskdjlkajsdlka lsdkjasdlk asldkjalsk dasdasd",
+											"type": "text"
+										},
+										{
+											"key": "categoryId",
+											"value": "66875bf7e550dab27585e41a",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API_URL}}/articles/668765d2c5294511ab1b6f13",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"articles",
+										"668765d2c5294511ab1b6f13"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/articles/668765d2c5294511ab1b6f13",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"articles",
+										"668765d2c5294511ab1b6f13"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{TOKEN}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
