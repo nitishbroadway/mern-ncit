@@ -4,6 +4,8 @@ const profileRoutes = require('./profile.routes.js')
 const authorsRoutes = require('./authors.routes.js')
 const categoriesRoutes = require('./categories.routes.js')
 const articlesRoutes = require('./articles.routes.js')
+const commentsRoutes = require('./comments.routes.js')
+const frontRoutes = require('./front.routes.js')
 const { auth, adminOnly } = require('../lib/index.js')
 
 const router = express.Router()
@@ -17,6 +19,10 @@ router.use('/authors', auth, adminOnly, authorsRoutes)
 router.use('/categories', auth, categoriesRoutes)
 
 router.use('/articles', auth, articlesRoutes)
+
+router.use('/comments', auth, commentsRoutes)
+
+router.use(frontRoutes)
 
 router.use((req, res, next) => {
     next({

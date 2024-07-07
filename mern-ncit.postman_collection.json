@@ -506,6 +506,46 @@
 					]
 				},
 				{
+					"name": "comments",
+					"item": [
+						{
+							"name": "List All",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/comments",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"comments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/comments/668a02af62b2ca3746026089",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"comments",
+										"668a02af62b2ca3746026089"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "articles",
 					"item": [
 						{
@@ -551,7 +591,7 @@
 										{
 											"key": "image",
 											"type": "file",
-											"src": []
+											"src": "alexandre-debieve-FO7JIlwjOtU-unsplash.jpg"
 										}
 									]
 								},
@@ -717,6 +757,139 @@
 							""
 						]
 					}
+				}
+			]
+		},
+		{
+			"name": "front",
+			"item": [
+				{
+					"name": "categories",
+					"item": [
+						{
+							"name": "List",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/category",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"category"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/category/66875bf7e550dab27585e41a",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"category",
+										"66875bf7e550dab27585e41a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Related Articles",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/category/66875bf7e550dab27585e41a/articles",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"category",
+										"66875bf7e550dab27585e41a",
+										"articles"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "articles",
+					"item": [
+						{
+							"name": "Latest List",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/article/latest",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"article",
+										"latest"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/article/668765a0c5294511ab1b6f0d",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"article",
+										"668765a0c5294511ab1b6f0d"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add comment",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"User B\",\n    \"email\": \"user.b@email.com\",\n    \"content\": \"Ok\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/article/668765a0c5294511ab1b6f0d/comment",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"article",
+										"668765a0c5294511ab1b6f0d",
+										"comment"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		}
