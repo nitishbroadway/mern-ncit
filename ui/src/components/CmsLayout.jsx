@@ -2,23 +2,22 @@ import "bootstrap/dist/css/bootstrap.css"
 import "bootstrap-icons/font/bootstrap-icons.css"
 import "react-toastify/ReactToastify.css"
 
-import { Container, Nav, Navbar, NavbarBrand, NavbarCollapse } from "react-bootstrap"
-import { NavLink } from "react-router-dom"
+import { Col, Container, Row } from "react-bootstrap"
+import { CmsNav } from "./CmsNav"
+import { Outlet } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 export const CmsLayout = () => {
+    const user = useSelector(state => state.user.value)
+
     return <>
-        <Navbar bg="dark" data-bs-theme="dark" expand="lg">
-            <Container>
-                <NavbarBrand>MERN NCIT</NavbarBrand>
-                <Navbar.Toggle />
-                <NavbarCollapse>
-                    <Nav>
-                        <Nav.Item>
-                            <NavLink className="nav-link" to="/cms/dashboard">Home</NavLink>
-                        </Nav.Item>
-                    </Nav>
-                </NavbarCollapse>
-            </Container>
-        </Navbar>
+        
+        {user != null && <CmsNav />}
+
+        <Container>
+            <Row>
+                <Outlet />
+            </Row>
+        </Container>
     </>
 }
