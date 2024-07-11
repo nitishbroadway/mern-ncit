@@ -2,9 +2,17 @@ import { Button, Col, Form, Row } from "react-bootstrap"
 import { useFormik } from "formik"
 import { useState } from "react"
 import * as Yup from "yup"
+import http from "../../http"
+import { inStorage, setValidationErrors } from "../../lib"
+import { setUser } from "../../store/user.slice"
+import { useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
 
 export const Login = () => {
     const [remember, setRemember] = useState(false)
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const formik = useFormik({
         initialValues: {
@@ -16,7 +24,20 @@ export const Login = () => {
             password: Yup.string().required()
         }),
         onSubmit: (values) => {
-            console.log(values)
+            http.post('/auth/login', values)
+                .then(({ data }) => {
+                    inStorage('mern-ncit-token', data.token, remember)
+
+                    return http.get('/profile/details')
+                })
+                .then(({ data }) => {
+                    dispatch(setUser(data))
+
+                    navigate('/cms/dashboard')
+                })
+                .catch(({ response }) => {
+                    setValidationErrors(response, formik)
+                })
         }
     })
 
