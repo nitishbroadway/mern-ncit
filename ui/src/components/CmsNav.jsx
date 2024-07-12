@@ -24,6 +24,9 @@ export const CmsNav = () => {
                     <Nav.Item>
                         <NavLink className="nav-link" to="/cms/dashboard">Home</NavLink>
                     </Nav.Item>
+                    <Nav.Item>
+                        <NavLink className="nav-link" to="/cms/articles">Articles</NavLink>
+                    </Nav.Item>
                 </Nav>
                 <Nav>
                     <NavDropdown title={user.name} align="end">

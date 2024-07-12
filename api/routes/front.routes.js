@@ -15,4 +15,12 @@ router.get('/category/:id', Front.CategoriesCtrl.byId)
 
 router.get('/category/:id/articles', Front.ArticlesCtrl.byCatId)
 
+router.get('/image/:filename', (req, res, next) => {
+    const { filename } = req.params
+
+    res.sendFile(`uploads/${filename}`, {
+        root: "./"
+    })
+})
+
 module.exports = router
