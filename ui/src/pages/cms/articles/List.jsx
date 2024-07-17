@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Col, Row, Table } from "react-bootstrap"
+import { Button, Col, Row, Table } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import http from "../../../http"
 import { Loading } from "../../../components"
@@ -17,6 +17,18 @@ export const List = () => {
             .catch(() => {})
             .finally(() => setLoading(false))
     }, [])
+
+    const handleDelete = id => {
+        if(confirm('Are you sure you want to delete this item?')) {
+            setLoading(true)
+
+            http.delete(`/articles/${id}`)
+                .then(() => http.get('/articles'))
+                .then(({ data }) => setArtilces(data))
+                .catch(() => { })
+                .finally(() => setLoading(false))
+        }
+    }
 
     return <Col className="bg-white py-3 my-3">
         {loading ? <Loading /> : <Row>
@@ -45,7 +57,10 @@ export const List = () => {
                                 </a>}
                             </td>
                             <td>{article.category.name}</td>
-                            <td></td>
+                            <td>
+                                <Link to={`/cms/articles/${article._id}/edit`} className="btn btn-dark btn-sm">Edit</Link>
+                                <Button type="button" className="btn btn-danger btn-sm ms-3" onClick={() => handleDelete(article._id)}>Delete</Button>
+                            </td>
                         </tr>)}
                     </tbody>
                 </Table> : <h4 className="text-muted">No data found</h4>}
